@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Quiz</title>
+  <style>
+    .question {
+      font-weight: bold;
+    }
+    .options {
+      margin-bottom: 10px;
+    }
+    .result {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Simple Quiz</h1>
+
+  <div id="quiz">
+    <div class="question">Question 1: What is the capital of France?</div>
+    <div class="options">
+      <input type="radio" name="q1" value="a"> a) London<br>
+      <input type="radio" name="q1" value="b"> b) Paris<br>
+      <input type="radio" name="q1" value="c"> c) Madrid<br>
+    </div>
+
+    <div class="question">Question 2: Who painted the Mona Lisa?</div>
+    <div class="options">
+      <input type="radio" name="q2" value="a"> a) Vincent van Gogh<br>
+      <input type="radio" name="q2" value="b"> b) Leonardo da Vinci<br>
+      <input type="radio" name="q2" value="c"> c) Pablo Picasso<br>
+    </div>
+
+    <div class="question">Question 3: What is the largest planet in our solar system?</div>
+    <div class="options">
+      <input type="radio" name="q3" value="a"> a) Mars<br>
+      <input type="radio" name="q3" value="b"> b) Jupiter<br>
+      <input type="radio" name="q3" value="c"> c) Saturn<br>
+    </div>
+
+    <button onclick="checkAnswers()">Submit</button>
+  </div>
+
+  <div id="result" class="result"></div>
+
+  <script>
+    function checkAnswers() {
+      var quiz = document.getElementById("quiz");
+      var result = document.getElementById("result");
+
+      var q1 = document.querySelector('input[name="q1"]:checked');
+      var q2 = document.querySelector('input[name="q2"]:checked');
+      var q3 = document.querySelector('input[name="q3"]:checked');
+
+      if (q1 && q2 && q3) {
+        var score = 0;
+
+        if (q1.value === "b") {
+          score++;
+        }
+
+        if (q2.value === "b") {
+          score++;
+        }
+
+        if (q3.value === "b") {
+          score++;
+        }
+
+        quiz.style.display = "none";
+        result.innerHTML = "You scored " + score + " out of 3.";
+      } else {
+        result.innerHTML = "Please answer all questions.";
+      }
+    }
+  </script>
+</body>
+</html>
